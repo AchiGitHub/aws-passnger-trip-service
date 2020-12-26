@@ -24,7 +24,11 @@ module.exports.createPassengerTrips = async (event, context, callback) => {
         TableName: "Passenger-Trips",
         Item: {
             id: context.awsRequestId,
+            passengerId: event.requestContext.authorizer.claims.sub,
             passengerName: responseBody.passengerName,
+            desitnation: responseBody.destination,
+            startTime: responseBody.startTime,
+            endTime: responseBody.endTime,
             tripTime: responseBody.tripTime,
             fare: responseBody.fare,
             createdAt: Date.now()
