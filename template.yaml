@@ -96,34 +96,34 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: Passenger-Trips
-  CreatePassengerPayment:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: ManagePayments/
-      Handler: app.createPassengerPayment
-      Runtime: nodejs12.x
-      Events:
-        HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /payment
-            Method: post
-            RestApiId:
-              Ref: ApiGatewayApi
-      Policies:
-        - Version: '2012-10-17'
-          Statement:
-            - Effect: Allow
-              Action:
-                - 'dynamodb:DeleteItem'
-                - 'dynamodb:GetItem'
-                - 'dynamodb:PutItem'
-                - 'dynamodb:UpdateItem'
-              Resource:
-                'Fn::Join':
-                  - ''
-                  - - 'arn:aws:dynamodb:'
-                    - Ref: 'AWS::Region'
-                    - ':'
-                    - Ref: 'AWS::AccountId'
-                    - ':table/Passenger-Payments'
+  # CreatePassengerPayment:
+  #   Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+  #   Properties:
+  #     CodeUri: ManagePayments/
+  #     Handler: app.createPassengerPayment
+  #     Runtime: nodejs12.x
+  #     Events:
+  #       HelloWorld:
+  #         Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+  #         Properties:
+  #           Path: /payment
+  #           Method: post
+  #           RestApiId:
+  #             Ref: ApiGatewayApi
+  #     Policies:
+  #       - Version: '2012-10-17'
+  #         Statement:
+  #           - Effect: Allow
+  #             Action:
+  #               - 'dynamodb:DeleteItem'
+  #               - 'dynamodb:GetItem'
+  #               - 'dynamodb:PutItem'
+  #               - 'dynamodb:UpdateItem'
+  #             Resource:
+  #               'Fn::Join':
+  #                 - ''
+  #                 - - 'arn:aws:dynamodb:'
+  #                   - Ref: 'AWS::Region'
+  #                   - ':'
+  #                   - Ref: 'AWS::AccountId'
+  #                   - ':table/Passenger-Payments'
